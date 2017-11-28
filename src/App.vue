@@ -1,8 +1,12 @@
 <template>
   <div id="app">
-    <router-link to="/" replace>values</router-link>
-    <router-link to="/result" replace>result</router-link>
-    <router-link to="/diagram" replace>diagram</router-link>
+    <div class="pure-menu pure-menu-horizontal">
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><router-link to="/" class="pure-menu-link" replace>values</router-link></li>
+            <li class="pure-menu-item"><router-link to="/result" class="pure-menu-link" replace>result</router-link></li>
+            <li class="pure-menu-item"> <router-link to="/diagram" class="pure-menu-link" replace>diagram</router-link></li>
+        </ul>
+    </div>
     <router-view/>
   </div>
 </template>

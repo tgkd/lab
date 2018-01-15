@@ -1,6 +1,7 @@
 export default class Calc {
     constructor(params) {
         this.params = params;
+        this.airTemp.paramName = 'Температура подогрева воздуха в рекуператоре, °С';
     }
 
     airTemp() {
@@ -9,7 +10,7 @@ export default class Calc {
     }
 
     averageAirTemp() {
-        return this.airTemp() * (0.0001 + 1.289);
+        return 0.0001 * this.airTemp() + 1.289;
     }
 
     airEnth() {
@@ -18,11 +19,11 @@ export default class Calc {
     }
 
     rateOfSmokeHeatLoss() {
-        return this.airEnth() / ((100 - this.params.heatLoss) * 100);
+        return this.airEnth() / (100 - this.params.heatLoss) * 100;
     }
 
     averageVHeatSmokeGases() {
-        return 0.0001 * (this.params.TSmoke + 1.41);
+        return 0.0001 * this.params.TSmoke + 1.41;
     }
 
     smokeEnthIncoming() {
@@ -51,7 +52,7 @@ export default class Calc {
     logAvgTempDiff() {
         const start = this.logAvgTempStart();
         const end = this.logAvgTempEnd();
-        return (start - end) / Math.log(start - end);
+        return (start - end) / Math.log(start / end);
     }
 
     airChannelsSize() {

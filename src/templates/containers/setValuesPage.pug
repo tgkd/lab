@@ -1,4 +1,8 @@
 .values-page
     h1 {{msg}}
+    .set(v-for="item in params")
+        input(type="number" :value="item")
+
     .data-row(v-for="item in data")
-        p {{item}}
+        span {{item.name}}
+        span {{item.value}}

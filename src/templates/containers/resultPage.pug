@@ -1,2 +1,6 @@
 .result-page
     h1 {{msg}}
+
+    .result-row(v-for="item in data")
+        span.result-row__name {{item.name}}
+        span.result-row__value {{item.value}}

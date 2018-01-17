@@ -1,8 +1,9 @@
 .values-page
     h1 {{msg}}
-    .set(v-for="item in params")
-        input(type="number" :value="item")
+    .values-page__rows
+        .value-row(v-for="(item, id) in params")
+            span.value-row__name {{paramNames[id]}}
+            input.value-row__input(:id="`input-${id}`" type="number" :value="item" @change="changeHandler")
 
-    .data-row(v-for="item in data")
-        span {{item.name}}
-        span {{item.value}}
+    .values-page__buttons
+        button.btn.btn--primary(@click="calcClick") Расчет

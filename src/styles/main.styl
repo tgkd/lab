@@ -1,7 +1,67 @@
  #app
+    display flex
+    flex-direction column
+    align-items center
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
+
+    .result-page,
+    .values-page
+        width 950px
+        padding 0 50px
+
+    .value-row,
+    .result-row
+        box-sizing border-box
+        display flex
+        justify-content space-between
+        align-items center
+
+        &__name
+            text-align left
+
+        &__input
+            box-sizing border-box
+            height 30px
+            padding 3px 5px
+            border solid 1px #acbccc
+            border-radius 3px
+
+    .result-row,
+    .value-row
+        border-bottom solid 1px #acbccc
+        padding 10px 5px 2px
+
+        &:hover
+            background-color #cccccc45
+            cursor default
+
+    .value-row
+        padding 3px 2px
+        border none
+
+.values-page
+    &__rows
+        margin-bottom 30px
+    &__buttons
+        display flex
+        justify-content flex-end
+
+.btn
+    height 40px
+    width 90px
+    box-sizing border-box
+    box-shadow none 
+    background-color #fff
+    border-radius 3px
+
+    &--primary
+        border solid 2px #acbccc
+        border-radius 5px
+
+        &:hover
+            border-color #2c3e50

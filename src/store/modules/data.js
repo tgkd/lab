@@ -1,39 +1,43 @@
 /* eslint-disable no-shadow */
-import defaultParams from '@/lib/defaultParams';
 import Vue from 'vue';
-// import Api from '../../api/api'
+import defaultParams from '@/lib/defaultParams';
 import * as types from '../mutation-types';
 
-// const api = new Api()
-
 const state = {
-    defaultValues: defaultParams,
+    values: defaultParams,
 };
 
 const getters = {
-    defaultValues: state => {
-        const propNames = Object.getOwnPropertyNames(state.defaultValues).slice(0, -1);
+    params: state => {
+        const propNames = Object.getOwnPropertyNames(state.values).slice(0, -1);
         const reslut = {};
         propNames.forEach(el => {
-            reslut[el] = state.defaultValues[el].value;
+            reslut[el] = state.values[el].value;
         });
         return reslut;
     },
+    paramNames: state => {
+        const propNames = Object.getOwnPropertyNames(state.values).slice(0, -1);
+        const reslut = {};
+        propNames.forEach(el => {
+            reslut[el] = state.values[el].name;
+        });
+        return reslut;
+    },
+    values: state =>
+        // todo cleanup obj props
+         state.values,
 };
 
 const actions = {
-    /*     async getDefaultParams({ commit }) {
-        commit(types.GET_DEFAULT_PARAMS, await api.getParams())
+    setNewParams({ commit }, data) {
+        commit(types.SET_PARAMS, data);
     },
-
-    async setDefaultParams({ commit }) {
-        commit(types.SET_DEFAULT_PARAMS, await api.setParams())
-    }, */
 };
 
 const mutations = {
-    [types.SET_DEFAULT_PARAMS](state, newValues) {
-        Vue.set(state, 'defaultValues', newValues);
+    [types.SET_PARAMS](state, newValues) {
+        Vue.set(state, 'values', newValues);
     },
 };
 

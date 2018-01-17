@@ -1,32 +1,36 @@
 import Vue from 'vue';
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import template from '@/templates/containers/setValuesPage.pug';
-import Calc from '@/lib/calculate';
-import paramNames from '@/lib/calcParams';
 
 export default Vue.component('SetValuesPage', {
     template: template(),
     data() {
         return {
-            msg: 'Set Values Page',
-            data: null,
+            msg: 'Расчетные параметры',
+            paramValues: [],
         };
     },
 
     computed: {
-        ...mapGetters({
-            params: 'defaultValues',
-        }),
+        ...mapGetters(['params', 'paramNames', 'values']),
+    },
+
+    methods: {
+        ...mapActions(['setNewParams']),
+
+        calcClick() {
+            this.setNewParams(this.paramValues);
+            this.$router.push({ name: 'ResultPage' });
+        },
+
+        changeHandler(e) {
+            const param = e.target.id.slice(6);
+            const value = parseFloat(e.target.value);
+            this.paramValues[param].value = value;
+        },
     },
 
     mounted() {
-        if (this.params) {
-            const calc = new Calc(this.params);
-            const propNames = Object.getOwnPropertyNames(Calc.prototype);
-            this.data = propNames.filter(item => item !== 'constructor').map((prop, id) => ({
-                name: paramNames[id],
-                value: calc[prop]().toFixed(2),
-            }));
-        }
+        this.paramValues = this.values;
     },
 });

@@ -13,24 +13,43 @@ export default Vue.component('SetValuesPage', {
 
     computed: {
         ...mapGetters(['params', 'paramNames', 'values']),
+
+        disabled() {
+            return !!this.paramValues.filter(el => el.error).length;
+        },
     },
 
     methods: {
         ...mapActions(['setNewParams']),
 
         calcClick() {
-            this.setNewParams(this.paramValues);
+            if (this.disabled) return;
+            const data = this.paramValues.map(item => ({
+                id: item.id,
+                name: item.name,
+                value: item.value,
+                min: item.min,
+                max: item.max,
+            }));
+            this.setNewParams(data);
             this.$router.push({ name: 'ResultPage' });
         },
 
         changeHandler(e) {
-            const param = e.target.id.slice(6);
+            const name = e.target.id.slice(6);
             const value = parseFloat(e.target.value);
-            this.paramValues[param].value = value;
+            const param = this.paramValues[name];
+            if (!value || value <= param.min || value >= param.max) {
+                param.error = true;
+            } else {
+                param.error = false;
+            }
+            param.value = value;
         },
     },
 
     mounted() {
         this.paramValues = this.values;
+        this.paramValues = this.paramValues.map(param => ({ ...param, error: false }));
     },
 });

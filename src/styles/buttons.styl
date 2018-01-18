@@ -1,0 +1,22 @@
+.btn
+    height 40px
+    width 90px
+    box-sizing border-box
+    box-shadow none 
+    background-color #129fea15
+    border-radius 3px
+
+    &--primary
+        border solid 2px $default_blue
+        border-radius 5px
+
+        &:hover,
+        &:focus
+            border-color $dark_blue
+            background-color #129fea30
+    &:disabled
+        opacity .7
+        &:hover
+            border-color $default_blue
+            background-color #129fea15
+            cursor not-allowed

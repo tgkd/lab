@@ -1,0 +1,22 @@
+.values,
+.diagram-result
+    display none
+
+@media print
+    .values,
+    .results
+        display block
+        max-width 830px
+        margin-left 60px
+
+    .results
+        page-break-before always
+
+    .pure-menu
+        display none !important
+
+    span,
+    h1,
+    h2
+        font-family 'Avenir', Helvetica, Arial, sans-serif
+        color #000

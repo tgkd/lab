@@ -18,107 +18,124 @@ const names = [
     'Эмпирический коэффициент для расчета теплоотдачи',
 ];
 
-export default {
-    VSmoke: {
+export default [
+    {
+        id: 'VSmoke',
         name: names[1],
         value: 1330,
         min: 100,
-        max: 300,
+        max: 3000,
     },
-    VAir: {
+    {
+        id: 'VAir',
         name: names[0],
         value: 1340,
         min: 100,
         max: 3000,
     },
-    airHeat: {
+    {
+        id: 'airHeat',
         name: names[2],
         value: 300,
         min: 20,
         max: 800,
     },
-    TAirStart: {
+    {
+        id: 'TAirStart',
         name: names[3],
         value: 20,
         min: -20,
         max: 250,
     },
-    TSmoke: {
+    {
+        id: 'TSmoke',
         name: names[4],
         value: 750,
         min: 350,
         max: 900,
     },
-    delT: {
+    {
+        id: 'delT',
         name: names[5],
         value: 20,
         min: 0,
         max: 200,
     },
-    heatLoss: {
+    {
+        id: 'heatLoss',
         name: names[6],
         value: 10,
         min: 0,
         max: 99,
     },
-    CSmoke: {
+    {
+        id: 'CSmoke',
         name: names[7],
         value: 1.47,
         min: 1.42,
         max: 1.59,
     },
-    I: {
+    {
+        id: 'I',
         name: names[8],
         value: 880,
         min: 880,
         max: 1640,
     },
-    SAir: {
+    {
+        id: 'SAir',
         name: names[9],
         value: 0.008,
         min: 0.008,
         max: 0.008,
     },
-    SSmoke: {
+    {
+        id: 'SSmoke',
         name: names[10],
         value: 0.042,
         min: 0.042,
         max: 0.12,
     },
-    S: {
+    {
+        id: 'S',
         name: names[11],
         value: 0.25,
         min: 0.25,
         max: 0.5,
     },
-    NAir: {
+    {
+        id: 'NAir',
         name: names[12],
         value: 9,
         min: 4,
         max: 100,
     },
-    NSmoke: {
+    {
+        id: 'NSmoke',
         name: names[13],
         value: 3,
         min: 3,
         max: 50,
     },
-    channelsCount: {
+    {
+        id: 'channelsCount',
         name: names[14],
         value: 4,
         min: 1,
         max: 10,
     },
-    B: {
+    {
+        id: 'B',
         name: names[15],
         value: 17,
         min: 17,
         max: 41.2,
     },
-    n: {
+    {
+        id: 'n',
         name: names[16],
         value: 1.03,
         min: 0.72,
         max: 1.03,
     },
-};
+];

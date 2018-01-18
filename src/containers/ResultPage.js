@@ -15,7 +15,7 @@ export default Vue.component('ResultPage', {
     },
 
     computed: {
-        ...mapGetters(['params']),
+        ...mapGetters(['params', 'values']),
     },
 
     mounted() {

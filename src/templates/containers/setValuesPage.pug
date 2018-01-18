@@ -1,9 +1,15 @@
 .values-page
     h1 {{msg}}
     .values-page__rows
-        .value-row(v-for="(item, id) in params")
-            span.value-row__name {{paramNames[id]}}
-            input.value-row__input(:id="`input-${id}`" type="number" :value="item" @change="changeHandler")
-
+        .value-row(v-for="(item, id) in paramValues")
+            span.value-row__name {{item.name}}
+            .input-container
+                input.input--default.value-row__input(
+                    :id="`input-${id}`" 
+                    type="number" 
+                    :value="item.value" 
+                    @change="changeHandler" 
+                    :class="item.error ? 'input--warn' : '' ")
+                span.warn(v-show="item.error") Значение выходит за пределы диапазона [{{item.min}}; {{item.max}}]
     .values-page__buttons
-        button.btn.btn--primary(@click="calcClick") Расчет
+        button.btn.btn--primary(@click="calcClick" :disabled="disabled") Расчет

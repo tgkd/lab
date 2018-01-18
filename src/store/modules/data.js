@@ -9,20 +9,11 @@ const state = {
 
 const getters = {
     params: state => {
-        const propNames = Object.getOwnPropertyNames(state.values).slice(0, -1);
-        const reslut = {};
-        propNames.forEach(el => {
-            reslut[el] = state.values[el].value;
+        const result = {};
+        state.values.forEach(el => {
+            result[el.id] = el.value;
         });
-        return reslut;
-    },
-    paramNames: state => {
-        const propNames = Object.getOwnPropertyNames(state.values).slice(0, -1);
-        const reslut = {};
-        propNames.forEach(el => {
-            reslut[el] = state.values[el].name;
-        });
-        return reslut;
+        return result;
     },
     values: state =>
         // todo cleanup obj props

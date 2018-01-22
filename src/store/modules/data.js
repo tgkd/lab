@@ -1,6 +1,7 @@
 /* eslint-disable no-shadow */
 import Vue from 'vue';
 import defaultParams from '@/lib/defaultParams';
+import { chartAvgTempSmoke, chartAvgTempAir, calcChartData } from '@/lib/chartData';
 import * as types from '../mutation-types';
 
 const state = {
@@ -15,9 +16,9 @@ const getters = {
         });
         return result;
     },
-    values: state =>
-        // todo cleanup obj props
-         state.values,
+    values: state => state.values,
+    chartAvgTempAir: () => calcChartData(chartAvgTempAir),
+    chartAvgTempSmoke: () => calcChartData(chartAvgTempSmoke),
 };
 
 const actions = {

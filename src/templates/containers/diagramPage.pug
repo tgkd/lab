@@ -1,2 +1,8 @@
-.diagram-page
-    h1 {{msg}}
+.chart-page
+    h2 Средняя теплоемкость воздуха
+    .chart-page__air
+        scatter-plot(:chart-data="chartAvgTempAir", :name="'.chart-page__air'")
+
+    h2 Средняя теплоемкость дымовых газов
+    .chart-page__smoke
+        scatter-plot(:chart-data="chartAvgTempSmoke", :name="'.chart-page__smoke'")

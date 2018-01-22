@@ -15,7 +15,7 @@ export default Vue.component('ResultPage', {
     },
 
     computed: {
-        ...mapGetters(['params', 'values']),
+        ...mapGetters(['params', 'values', 'chartAvgTempAir', 'chartAvgTempSmoke']),
     },
 
     mounted() {

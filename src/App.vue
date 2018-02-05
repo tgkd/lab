@@ -8,12 +8,27 @@
         </ul>
     </div>
     <router-view/>
+    <div class="modal" v-if="modalIsVisible" @click="closeModal">
+      <div class="modal__content">test</div>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
     name: 'app',
+    computed: {
+        ...mapGetters(['modalIsVisible']),
+    },
+    methods: {
+        ...mapActions(['setModalVisible']),
+
+        closeModal() {
+            this.setModalVisible(false);
+        },
+    },
 };
 </script>
 

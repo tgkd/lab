@@ -12,7 +12,7 @@ export default Vue.component('SetValuesPage', {
     },
 
     computed: {
-        ...mapGetters(['params', 'paramNames', 'values']),
+        ...mapGetters(['params', 'paramNames', 'values', 'modalIsVisible']),
 
         disabled() {
             return !!this.paramValues.filter(el => el.error).length;
@@ -20,7 +20,7 @@ export default Vue.component('SetValuesPage', {
     },
 
     methods: {
-        ...mapActions(['setNewParams']),
+        ...mapActions(['setNewParams', 'setModalVisible']),
 
         calcClick() {
             if (this.disabled) return;
@@ -33,6 +33,10 @@ export default Vue.component('SetValuesPage', {
             }));
             this.setNewParams(data);
             this.$router.push({ name: 'ResultPage' });
+        },
+
+        modalVisible() {
+            this.setModalVisible(true);
         },
 
         changeHandler(e) {

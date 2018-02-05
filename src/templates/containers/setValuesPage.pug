@@ -1,15 +1,17 @@
 .values-page
     h1 {{msg}}
-    .values-page__rows
-        .value-row(v-for="(item, id) in paramValues")
-            span.value-row__name {{item.name}}
-            .input-container
-                input.input--default.value-row__input(
-                    :id="`input-${id}`" 
-                    type="number" 
-                    :value="item.value" 
-                    @change="changeHandler" 
-                    :class="item.error ? 'input--warn' : '' ")
+    .ui.middle.aligned.list
+        .item(v-for="(item, id) in paramValues")
+            .left.floated.content {{item.name}}
+            .right.floated.content
+                .ui.input
+                    input(
+                        :id="`input-${id}`" 
+                        type="number" 
+                        :value="item.value" 
+                        @change="changeHandler" 
+                        :class="item.error ? 'input--warn' : '' ")
                 span.warn(v-show="item.error") Значение выходит за пределы диапазона [{{item.min}}; {{item.max}}]
     .values-page__buttons
-        button.btn.btn--primary(@click="calcClick" :disabled="disabled") Расчет
+        button.ui.primary.button(@click="calcClick" :disabled="disabled") Расчет
+        button.ui.primary.button(@click="modalVisible") Загрузить

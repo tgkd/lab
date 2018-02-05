@@ -6,6 +6,7 @@ import * as types from '../mutation-types';
 
 const state = {
     values: defaultParams,
+    modalIsVisible: false,
 };
 
 const getters = {
@@ -19,17 +20,26 @@ const getters = {
     values: state => state.values,
     chartAvgTempAir: () => calcChartData(chartAvgTempAir),
     chartAvgTempSmoke: () => calcChartData(chartAvgTempSmoke),
+    modalIsVisible: () => state.modalIsVisible,
 };
 
 const actions = {
     setNewParams({ commit }, data) {
         commit(types.SET_PARAMS, data);
     },
+
+    setModalVisible({ commit }, data) {
+        commit(types.SET_MODAL_VISIBILITY, data);
+    },
 };
 
 const mutations = {
     [types.SET_PARAMS](state, newValues) {
         Vue.set(state, 'values', newValues);
+    },
+
+    [types.SET_MODAL_VISIBILITY](state, newVal) {
+        Vue.set(state, 'modalIsVisible', newVal);
     },
 };
 

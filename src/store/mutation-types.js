@@ -1,3 +1,4 @@
 export const GET_DEFAULT_PARAMS = 'GET_DEFAULT_PARAMS';
 export const SET_PARAMS = 'SET_PARAMS';
 export const SET_MODAL_VISIBILITY = 'SET_MODAL_VISIBILITY';
+export const SET_SAVES = 'SET_SAVES';

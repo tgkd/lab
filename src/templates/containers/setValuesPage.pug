@@ -4,14 +4,13 @@
         .item(v-for="(item, id) in paramValues")
             .left.floated.content {{item.name}}
             .right.floated.content
-                .ui.input
+                .ui.input(:class="item.error ? 'error' : '' ")
                     input(
                         :id="`input-${id}`" 
                         type="number" 
                         :value="item.value" 
-                        @change="changeHandler" 
-                        :class="item.error ? 'input--warn' : '' ")
+                        @change="changeHandler")
                 span.warn(v-show="item.error") Значение выходит за пределы диапазона [{{item.min}}; {{item.max}}]
     .values-page__buttons
-        button.ui.primary.button(@click="calcClick" :disabled="disabled") Расчет
         button.ui.primary.button(@click="modalVisible") Загрузить
+        button.ui.primary.button(@click="calcClick" :disabled="disabled" style="margin-left: auto") Расчет

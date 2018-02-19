@@ -1,8 +1,8 @@
 /* eslint-disable no-shadow */
 import Vue from 'vue';
-import defaultParams from '@/lib/defaultParams';
-import { chartAvgTempSmoke, chartAvgTempAir, calcChartData } from '@/lib/chartData';
-import { getSavesList, addNewSave } from '@/lib/savesLib';
+import defaultParams from '../../lib/defaultParams';
+import { chartAvgTempSmoke, chartAvgTempAir, calcChartData } from '../../lib/chartData';
+import { getSavesList, addNewSave } from '../../lib/savesLib';
 import * as types from '../mutation-types';
 
 const state = {
